@@ -13,7 +13,7 @@
 
 .item {
     position: absolute;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 }
 
 .tap {
@@ -72,23 +72,16 @@
     top: 59%;
 }
 
-.sink {
-    width: 16.5%;
-    height: 2.5%;
-    left: 16%;
-    top: 59%;
+.handle-1 {
+    width: 1%;
+    height: 8%;
+    left: 20%;
+    top: 66%;
 }
 
-.sink {
-    width: 16.5%;
-    height: 2.5%;
-    left: 16%;
-    top: 59%;
-}
-
-.sink {
-    width: 16.5%;
-    height: 2.5%;
-    left: 16%;
-    top: 59%;
+.handle-2 {
+    width: 1%;
+    height: 8%;
+    left: 25%;
+    top: 66%;
 }

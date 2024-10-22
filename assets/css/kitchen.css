@@ -13,7 +13,7 @@
 
 .item {
     position: absolute;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 }
 
 .tap {

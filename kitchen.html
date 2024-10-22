@@ -13,11 +13,11 @@
 
 <body>
     <!-- Modal -->
-    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h1 class="modal-title fs-5" id="exampleModalLabel">Noun</h1>
+                    <h1 class="modal-title fs-5" id="modalLabel">Noun</h1>
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                 </div>
                 <div class="modal-body"></div>
@@ -25,7 +25,7 @@
             </div>
         </div>
     </div>
-    
+
     <div class="row m-0 p-0">
         <div class="col-12 m-0 p-0 col-md-6">
             <h1>Kitchen</h1>
@@ -39,11 +39,6 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            let tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
-            let tooltipList = tooltipTriggerList.map(function (tooltipTriggerEl) {
-                return new bootstrap.Tooltip(tooltipTriggerEl);
-            });
-    
             let words = [
                 { 
                     spanish: 'Azulejos', 
@@ -187,25 +182,27 @@
             ];
     
             let imageContainer = document.querySelector('.image-container');
-            let modalTitle = document.querySelector('#exampleModalLabel');
+            let modalTitle = document.querySelector('#modalLabel');
             let modalBody = document.querySelector('.modal-body');
     
             words.forEach((word, index) => {
                 let item = document.createElement('div');
                 item.classList.add('item');
                 item.classList.add(word.english.toLowerCase().replace(/ /g, '-'));
-                item.dataset.bsToggle = 'tooltip';
-                item.dataset.bsPlacement = 'bottom';
-                item.title = word.spanish;
+
+                let translation = document.createElement('div');
+                translation.classList.add('translation');
+                translation.innerHTML = `${word.spanish} (${word.english})`;
+                translation.dataset.bsToggle = 'modal';
+                translation.dataset.bsTarget = '#modal';
                 
-                let button = document.createElement('button');
-                button.type = 'button';
-                button.classList.add('more-button');
-                button.dataset.bsToggle = 'modal';
-                button.dataset.bsTarget = '#exampleModal';
-                button.innerHTML = 'More';
+                // let button = document.createElement('button');
+                // button.type = 'button';
+                // button.classList.add('more-button');
+               
+                // button.innerHTML = 'More';
     
-                button.addEventListener('click', function () {
+                translation.addEventListener('click', function () {
                     modalTitle.textContent = word.spanish;
     
                     if (word.sentences) {
@@ -221,7 +218,8 @@
                     }
                 });
     
-                item.appendChild(button);
+                // item.appendChild(button);
+                item.appendChild(translation);
                 imageContainer.appendChild(item);
             });
         });

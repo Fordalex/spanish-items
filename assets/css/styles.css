@@ -2,8 +2,31 @@
     display: none;
 }
 
-.item:hover .more-button {
-    display: block;
+.translation {
+    cursor: pointer;
+    display: none;
+    background-color: #fff;
+    border-radius: 0.5rem;
+    padding: 0.5rem;
+    position: relative;
+    font-size: 0.7rem;
+    width: fit-content;
+    top: 20px;
+}
+
+.translation::after {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -100%);
+    border: 0.5rem solid transparent;
+    border-bottom-color: #fff;
+}
+
+.item:hover .more-button,
+.item:hover .translation {
+    display: flex;
 }
 
 .image {
@@ -19,7 +42,7 @@
 }
 
 .item:hover {
-    border: solid black 1px;
+    background-color: rgba(0,0,0,0.2);
 }
 
 .sentence {

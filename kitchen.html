@@ -12,7 +12,6 @@
 </head>
 
 <body>
-    <!-- Modal -->
     <div class="modal fade" id="modal" tabindex="-1" aria-labelledby="modalLabel" aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
@@ -157,27 +156,84 @@
                 { 
                     spanish: 'Fregadero',
                     english: 'Sink',
-                    sentences: []
+                    sentences: [
+                        { 
+                            spanish: 'El fregadero de la cocina está lleno de platos.', 
+                            english: 'The kitchen sink is full of dishes.' 
+                        },
+                        { 
+                            spanish: 'El fregadero de la cocina está sucio.',
+                            english: 'The kitchen sink is dirty.'
+                        },
+                        { 
+                            spanish: 'El fregadero de la cocina está limpio.',
+                            english: 'The kitchen sink is clean.'
+                        },
+                        { 
+                            english: 'Wash the dishes in the kitchen sink.',
+                            spanish: 'Lava los platos en el fregadero de la cocina.'
+                        },
+                        { 
+                            english: 'Dry the dishes in the kitchen sink.',
+                            spanish: 'Seca los platos en el fregadero de la cocina.'
+                        }
+                    ]
                 },
                 { 
                     spanish: 'Cuchillos',
                     english: 'Knives',
-                    sentences: []
+                    sentences: [
+                        { 
+                            spanish: 'Los cuchillos de la cocina están afilados.', 
+                            english: 'The kitchen knives are sharp.' 
+                        },
+                        { 
+                            spanish: 'Los cuchillos de la cocina están en el cajón.',
+                            english: 'The kitchen knives are in the draw.'
+                        },
+                        { 
+                            spanish: 'Los cuchillos de la cocina están limpios.',
+                            english: 'The kitchen knives are clean.'
+                        }
+                    ]
                 },
                 { 
                     spanish: 'Manilla',
                     english: 'Handle',
-                    sentences: []
+                    sentences: [
+                        { 
+                            spanish: 'La manilla de la puerta de la cocina está rota.', 
+                            english: 'The kitchen door handle is broken.' 
+                        },
+                        { 
+                            spanish: 'La manilla de la puerta de la cocina está sucia.',
+                            english: 'The kitchen door handle is dirty.'
+                        },
+                        { 
+                            spanish: 'La manilla de la puerta de la cocina está limpia.',
+                            english: 'The kitchen door handle is clean.'
+                        }
+                    ]
                 },
                 { 
                     spanish: 'Placas de cocción',
                     english: 'Hobs',
-                    sentences: []
+                    sentences: [
+                        { 
+                            spanish: 'Las placas de cocción de la cocina están calientes.', 
+                            english: 'The kitchen hobs are hot.' 
+                        }
+                    ]
                 },
                 { 
                     spanish: 'Olla',
                     english: 'Cooking Pot',
-                    sentences: []
+                    sentences: [
+                        {
+                            english: 'The cooking pot is on the hob, next to the sink.',
+                            spanish: 'La olla está en la placa de cocción, al lado del fregadero.'
+                        }
+                    ]
                  }
             ];
     
@@ -195,12 +251,6 @@
                 translation.innerHTML = `${word.spanish} (${word.english})`;
                 translation.dataset.bsToggle = 'modal';
                 translation.dataset.bsTarget = '#modal';
-                
-                // let button = document.createElement('button');
-                // button.type = 'button';
-                // button.classList.add('more-button');
-               
-                // button.innerHTML = 'More';
     
                 translation.addEventListener('click', function () {
                     modalTitle.textContent = word.spanish;
@@ -218,7 +268,6 @@
                     }
                 });
     
-                // item.appendChild(button);
                 item.appendChild(translation);
                 imageContainer.appendChild(item);
             });

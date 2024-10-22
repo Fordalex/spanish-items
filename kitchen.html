@@ -38,7 +38,7 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function () {
-            let words = [
+            window.words = [
                 { 
                     spanish: 'Azulejos', 
                     english: 'Tile',
@@ -236,42 +236,9 @@
                     ]
                  }
             ];
-    
-            let imageContainer = document.querySelector('.image-container');
-            let modalTitle = document.querySelector('#modalLabel');
-            let modalBody = document.querySelector('.modal-body');
-    
-            words.forEach((word, index) => {
-                let item = document.createElement('div');
-                item.classList.add('item');
-                item.classList.add(word.english.toLowerCase().replace(/ /g, '-'));
-
-                let translation = document.createElement('div');
-                translation.classList.add('translation');
-                translation.innerHTML = `${word.spanish} (${word.english})`;
-                translation.dataset.bsToggle = 'modal';
-                translation.dataset.bsTarget = '#modal';
-    
-                translation.addEventListener('click', function () {
-                    modalTitle.textContent = word.spanish;
-    
-                    if (word.sentences) {
-                        modalBody.innerHTML = '';
-                        word.sentences.forEach(sentence => {
-                            let sentenceDiv = document.createElement('div');
-                            sentenceDiv.classList.add('sentence');
-                            sentenceDiv.innerHTML = `<strong>Spanish:</strong> ${sentence.spanish}<br><strong>English:</strong> ${sentence.english}`;
-                            modalBody.appendChild(sentenceDiv);
-                        });
-                    } else {
-                        modalBody.textContent = 'No sentences available.';
-                    }
-                });
-    
-                item.appendChild(translation);
-                imageContainer.appendChild(item);
-            });
         });
-    </script>    
+    </script>
+    
+    <script src="./assets/js/overlay.js"></script>
 </body>
 </html>

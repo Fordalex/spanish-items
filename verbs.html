@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    <link rel="stylesheet" href="./assets/css/styles.css">
+    <title>Verb Conjugation Cards</title>
+    <style>
+        .card {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 20px 0;
+            border-radius: 8px;
+            box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+        }
+        h3 {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+        }
+        table th, table td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        table th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+
+<h2>Verb Conjugation Cards</h2>
+
+<ul class="list">
+    <!-- Navigation Links -->
+    <li><a href="#tener-card">Tener</a></li>
+    <li><a href="#hacer-card">Hacer</a></li>
+    <li><a href="#traer-card">Traer</a></li>
+</ul>
+
+<hr>
+
+<h3>Present Tense (Presente)</h3>
+<p>Used for actions happening now or regularly.</p>
+<p><b>Example: Yo como (I eat).</b></p> 
+<hr>
+
+<h3>Preterite Tense (Pretérito)</h3>
+<p>Used for completed actions in the past.</p>
+<p><b>Example: Yo comí (I ate).</b></p> 
+<hr>
+
+<h3>Imperfect Tense (Imperfecto)</h3>
+<p>Used for ongoing or habitual actions in the past.</p>
+<p><b>Example: Yo comía (I used to eat).</b></p>    
+<hr>
+
+<h3>Future Tense (Futuro)</h3>
+<p>Used for actions that will happen.</p>
+<p><b>Example: Yo comeré (I will eat).</b></p>  
+<hr>
+
+<div id="verb-cards" class="d-flex gap-3 flex-column"></div>
+
+<script src="./assets/js/verbs.js"></script>
+
+<script>
+    let verbs = window.verbs;
+
+    function createCards() {
+        const cardsDiv = document.getElementById('verb-cards');
+        
+        // Loop over each verb
+        for (const verb in verbs) {
+            // Create a card div for each verb
+            const card = document.createElement('div');
+            card.classList.add('container');
+            card.id = `${verb}-card`;
+            
+            // Add a heading with the verb name
+            const verbHeading = document.createElement('h3');
+            verbHeading.textContent = `Conjugation of "${verb}"`;
+            card.appendChild(verbHeading);
+
+            // Loop over tenses
+            for (const tense in verbs[verb]) {
+                // Create a table for each tense
+                const table = document.createElement('table');
+                
+                // Create table header
+                const headerRow = document.createElement('tr');
+                const headers = [`Tense: ${tense}`, 'Pronoun', 'Spanish Conjugation', 'English Conjugation'];
+                headers.forEach(headerText => {
+                    const header = document.createElement('th');
+                    header.textContent = headerText;
+                    headerRow.appendChild(header);
+                });
+                table.appendChild(headerRow);
+
+                // Populate table rows
+                for (const pronoun in verbs[verb][tense]) {
+                    const row = document.createElement('tr');
+
+                    const tenseCell = document.createElement('td');
+                    tenseCell.textContent = tense;
+                    row.appendChild(tenseCell);
+
+                    const pronounCell = document.createElement('td');
+                    pronounCell.textContent = pronoun;
+                    row.appendChild(pronounCell);
+
+                    // Spanish conjugation
+                    const conjugationEsCell = document.createElement('td');
+                    conjugationEsCell.textContent = verbs[verb][tense][pronoun].es;
+                    row.appendChild(conjugationEsCell);
+
+                    // English conjugation
+                    const conjugationEnCell = document.createElement('td');
+                    conjugationEnCell.textContent = verbs[verb][tense][pronoun].en;
+                    row.appendChild(conjugationEnCell);
+
+                    table.appendChild(row);
+                }
+                
+                // Append the table to the card
+                card.appendChild(table);
+            }
+
+            // Append the card to the div
+            cardsDiv.appendChild(card);
+        }
+    }
+
+    // Call the function to create the cards
+    createCards();
+</script>
+
+</body>
+</html>

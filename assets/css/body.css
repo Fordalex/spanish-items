@@ -1,0 +1,111 @@
+.head {
+    width: 19%;
+    height: 19%;
+    left: 22%;
+    top: 21%;
+}
+
+.hair {
+    width: 19%;
+    height: 6%;
+    left: 22%;
+    top: 15%;
+}
+
+.neck {
+    width: 7%;
+    height: 3%;
+    left: 27%;
+    top: 40%;
+}
+
+.shoulder {
+    width: 33%;
+    height: 27%;
+    left: 59%;
+    top: 64%;
+}
+
+.arm {
+    width: 33%;
+    height: 27%;
+    left: 59%;
+    top: 64%;
+}
+
+.elbow {
+    width: 33%;
+    height: 27%;
+    left: 59%;
+    top: 64%;
+}
+
+.hand {
+    width: 19%;
+    height: 19%;
+    left: 22%;
+    top: 21%;
+}
+
+.finger {
+    width: 33%;
+    height: 27%;
+    left: 59%;
+    top: 64%;
+}
+
+.thumb {
+    width: 33%;
+    height: 27%;
+    left: 59%;
+    top: 64%;
+}
+
+.wrist {
+    width: 33%;
+    height: 27%;
+    left: 59%;
+    top: 64%;
+}
+
+.chest {
+    width: 19%;
+    height: 10%;
+    left: 22%;
+    top: 43%;
+}
+
+.stomach {
+    width: 19%;
+    height: 10%;
+    left: 22%;
+    top: 43%;
+}
+
+.back {
+    width: 19%;
+    height: 10%;
+    left: 22%;
+    top: 43%;
+}
+
+.waist {
+    width: 14%;
+    height: 8%;
+    left: 24%;
+    top: 53%;
+}
+
+.hip {
+    width: 14%;
+    height: 5%;
+    left: 24%;
+    top: 61%;
+}
+
+.leg {
+    width: 19%;
+    height: 10%;
+    left: 22%;
+    top: 43%;
+}

@@ -69,7 +69,7 @@ body {
 .item {
     padding: 5px;
     position: absolute;
-    border: solid black 1px;
+    /* border: solid black 1px; */
 }
 
 .item:hover {

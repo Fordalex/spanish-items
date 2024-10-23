@@ -1,0 +1,62 @@
+.image-container {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 3 / 2;
+    position: relative;
+}
+
+.kitchen {
+    width: 22%;
+    height: 26%;
+    left: 62%;
+    top: 66%;
+}
+
+.living-room {
+    width: 14%;
+    height: 26%;
+    left: 33%;
+    top: 66%;
+}
+
+.stairs {
+    width: 15%;
+    height: 26%;
+    left: 47%;
+    top: 66%;
+}
+
+.attic {
+    width: 25%;
+    height: 16%;
+    left: 37%;
+    top: 29%;
+}
+
+.bedroom {
+    width: 25%;
+    height: 21%;
+    left: 37%;
+    top: 45%;
+}
+
+.garage {
+    width: 15%;
+    height: 26%;
+    left: 18%;
+    top: 66%;
+}
+
+.bathroom {
+    width: 22%;
+    height: 21%;
+    left: 62%;
+    top: 45%;
+}
+
+.office {
+    width: 19%;
+    height: 21%;
+    left: 18%;
+    top: 45%;
+}

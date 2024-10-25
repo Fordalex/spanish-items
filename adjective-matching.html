@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Adjective and Forms Practice Game</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 0;
+      padding: 20px;
+      background-color: #f5f5f5;
+    }
+    .container {
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 20px;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h1 {
+      color: #333;
+    }
+    .pair-selection, .practice-section {
+      display: none;
+    }
+    .button-container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    .button {
+      margin: 10px;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 5px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #3498db;
+      color: white;
+    }
+    .button:hover {
+      background-color: #2980b9;
+    }
+    .feedback {
+      margin-top: 20px;
+      font-size: 1.2em;
+      color: #27ae60;
+    }
+    .example {
+      margin-top: 10px;
+      font-size: 1em;
+      color: #555;
+    }
+    .back-button {
+      margin-top: 20px;
+      padding: 8px 16px;
+      font-size: 1em;
+      cursor: pointer;
+      background-color: #e74c3c;
+      color: white;
+      border: none;
+      border-radius: 5px;
+    }
+    .back-button:hover {
+      background-color: #c0392b;
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <h1>Adjective and Forms Practice Game</h1>
+  
+  <!-- Pair Selection Screen -->
+  <div class="pair-selection" id="pairSelection">
+    <p>Select an adjective pair to practice:</p>
+    <div class="button-container" id="pairButtons"></div>
+  </div>
+
+  <!-- Practice Section -->
+  <div class="practice-section" id="practiceSection">
+    <div class="question" id="question"></div>
+    <div class="button-container">
+      <button class="button" onclick="checkAnswer(0)" id="option0">Option 1</button>
+      <button class="button" onclick="checkAnswer(1)" id="option1">Option 2</button>
+    </div>
+    <div class="feedback" id="feedback"></div>
+    <div class="example" id="example"></div>
+    <div class="button-container">
+        <button class="button" onclick="newQuestion()" id="nextButton">Next Question</button>
+    </div>
+    <button class="back-button" onclick="returnToPairSelection()">Back to Pair Selection</button>
+  </div>
+</div>
+
+<script>
+    const adjectivePairs = [
+    { 
+      base: { 
+        "slow": { translation: "lento", example: "El caracol es lento." },
+        "fast": { translation: "rápido", example: "El guepardo es rápido." }
+      },
+      comparative: { 
+        "slower": { translation: "más lento", example: "Ese auto es más lento que el mío." },
+        "faster": { translation: "más rápido", example: "Este tren es más rápido que el anterior." }
+      },
+      superlative: { 
+        "slowest": { translation: "el más lento", example: "Ese es el más lento de todos." },
+        "fastest": { translation: "el más rápido", example: "Ella es la más rápida en la clase." }
+      },
+      adverb: { 
+        "slowly": { translation: "lentamente", example: "El anciano camina lentamente." },
+        "quickly": { translation: "rápidamente", example: "El doctor atendió al paciente rápidamente." }
+      }
+    },
+    { 
+      base: { 
+        "big": { translation: "grande", example: "La montaña es muy grande." },
+        "small": { translation: "pequeño", example: "El ratón es pequeño." }
+      },
+      comparative: { 
+        "bigger": { translation: "más grande", example: "Mi perro es más grande que el tuyo." },
+        "smaller": { translation: "más pequeño", example: "Esa casa es más pequeña que esta." }
+      },
+      superlative: { 
+        "biggest": { translation: "el más grande", example: "Ese edificio es el más grande de la ciudad." },
+        "smallest": { translation: "el más pequeño", example: "El insecto es el más pequeño." }
+      },
+      adverb: { 
+        "largely": { translation: "en gran medida", example: "El éxito depende en gran medida del esfuerzo." },
+        "narrowly": { translation: "estrechamente", example: "El resultado estuvo estrechamente relacionado con el esfuerzo." }
+      }
+    },
+    { 
+      base: { 
+        "good": { translation: "bueno", example: "Él es un buen amigo." },
+        "bad": { translation: "malo", example: "El clima es malo hoy." }
+      },
+      comparative: { 
+        "better": { translation: "mejor", example: "Hoy me siento mejor que ayer." },
+        "worse": { translation: "peor", example: "La situación está peor ahora." }
+      },
+      superlative: { 
+        "best": { translation: "el mejor", example: "Ella es la mejor en su trabajo." },
+        "worst": { translation: "el peor", example: "Ese fue el peor momento de mi vida." }
+      },
+      adverb: { 
+        "well": { translation: "bien", example: "Lo hizo muy bien en el examen." },
+        "poorly": { translation: "mal", example: "Él se desempeñó mal en la prueba." }
+      }
+    },
+    { 
+      base: { 
+        "happy": { translation: "feliz", example: "Ella está feliz hoy." },
+        "sad": { translation: "triste", example: "Él se siente triste." }
+      },
+      comparative: { 
+        "happier": { translation: "más feliz", example: "Me siento más feliz que ayer." },
+        "sadder": { translation: "más triste", example: "Hoy está más triste que antes." }
+      },
+      superlative: { 
+        "happiest": { translation: "el más feliz", example: "Es el día más feliz de su vida." },
+        "saddest": { translation: "el más triste", example: "Ese fue el día más triste." }
+      },
+      adverb: { 
+        "happily": { translation: "felizmente", example: "Vivieron felizmente juntos." },
+        "sadly": { translation: "tristemente", example: "El evento terminó tristemente." }
+      }
+    },
+    { 
+      base: { 
+        "rich": { translation: "rico", example: "Él es muy rico." },
+        "poor": { translation: "pobre", example: "Ella creció en un barrio pobre." }
+      },
+      comparative: { 
+        "richer": { translation: "más rico", example: "Él es más rico que su vecino." },
+        "poorer": { translation: "más pobre", example: "Ese país es más pobre que el otro." }
+      },
+      superlative: { 
+        "richest": { translation: "el más rico", example: "Es el hombre más rico del mundo." },
+        "poorest": { translation: "el más pobre", example: "Es el pueblo más pobre de la región." }
+      },
+      adverb: { 
+        "richly": { translation: "ricamente", example: "El castillo está ricamente decorado." },
+        "poorly": { translation: "pobremente", example: "La familia vivía pobremente." }
+      }
+    },
+    { 
+      base: { 
+        "strong": { translation: "fuerte", example: "Él es muy fuerte." },
+        "weak": { translation: "débil", example: "Después de la enfermedad, se sintió débil." }
+      },
+      comparative: { 
+        "stronger": { translation: "más fuerte", example: "Hoy me siento más fuerte." },
+        "weaker": { translation: "más débil", example: "Después del accidente, está más débil." }
+      },
+      superlative: { 
+        "strongest": { translation: "el más fuerte", example: "Es el más fuerte del equipo." },
+        "weakest": { translation: "el más débil", example: "Ella es la más débil de la clase." }
+      },
+      adverb: { 
+        "strongly": { translation: "fuertemente", example: "Él defiende sus ideas fuertemente." },
+        "weakly": { translation: "débilmente", example: "Habló débilmente después de la cirugía." }
+      }
+    },
+    { 
+      base: { 
+        "early": { translation: "temprano", example: "Hoy me levanté temprano." },
+        "late": { translation: "tarde", example: "Llegué tarde a la reunión." }
+      },
+      comparative: { 
+        "earlier": { translation: "más temprano", example: "Mañana llegaré más temprano." },
+        "later": { translation: "más tarde", example: "Nos vemos más tarde." }
+      },
+      superlative: { 
+        "earliest": { translation: "el más temprano", example: "Es el vuelo más temprano." },
+        "latest": { translation: "el más tarde", example: "Es el evento más tarde de la noche." }
+      },
+      adverb: { 
+        "early": { translation: "temprano", example: "Llegó temprano a la cita." },
+        "late": { translation: "tarde", example: "Llegó tarde al trabajo." }
+      }
+    },
+    { 
+      base: { 
+        "clean": { translation: "limpio", example: "El cuarto está limpio." },
+        "dirty": { translation: "sucio", example: "La mesa está sucia." }
+      },
+      comparative: { 
+        "cleaner": { translation: "más limpio", example: "Este parque es más limpio que antes." },
+        "dirtier": { translation: "más sucio", example: "Esa calle es más sucia que esta." }
+      },
+      superlative: { 
+        "cleanest": { translation: "el más limpio", example: "Ese es el más limpio de todos." },
+        "dirtiest": { translation: "el más sucio", example: "Es el lugar más sucio que he visto." }
+      },
+      adverb: { 
+        "cleanly": { translation: "limpiamente", example: "El trabajo se realizó limpiamente." },
+        "dirtily": { translation: "suciosamente", example: "La obra fue realizada suciosamente." }
+      }
+    }
+];
+
+
+    let currentPair = null;
+    let currentForm;
+    let correctOption;
+    let currentWord;
+  
+    // Initialize the pair selection screen
+    function initializePairSelection() {
+      const pairButtonsContainer = document.getElementById("pairButtons");
+      pairButtonsContainer.innerHTML = '';
+  
+      adjectivePairs.forEach((pair, index) => {
+        const [word1, word2] = Object.keys(pair.base);
+        const button = document.createElement("button");
+        button.classList.add("button");
+        button.textContent = `${capitalize(word1)}/${capitalize(word2)}`;
+        button.onclick = () => startPractice(pair);
+        pairButtonsContainer.appendChild(button);
+      });
+  
+      document.getElementById("pairSelection").style.display = 'block';
+    }
+  
+    // Capitalize function for button text
+    function capitalize(word) {
+      return word.charAt(0).toUpperCase() + word.slice(1);
+    }
+  
+    // Start practice with selected pair
+    function startPractice(pair) {
+      currentPair = pair;
+      document.getElementById("pairSelection").style.display = 'none';
+      document.getElementById("practiceSection").style.display = 'block';
+      newQuestion();
+    }
+  
+    // Generate a new question for the selected pair
+    function newQuestion() {
+      // Choose a random form (base, comparative, superlative, or adverb)
+      const forms = ["base", "comparative", "superlative", "adverb"];
+      currentForm = forms[Math.floor(Math.random() * forms.length)];
+  
+      const words = Object.keys(currentPair[currentForm]);
+      currentWord = words[Math.floor(Math.random() * words.length)];
+      const correctTranslation = currentPair[currentForm][currentWord].translation;
+      const incorrectTranslation = getRandomIncorrectTranslation(currentForm, correctTranslation);
+  
+      // Set the question
+      document.getElementById("question").innerText = `"${currentWord}"`;
+      document.getElementById("feedback").innerText = "";
+      document.getElementById("example").innerText = "";
+  
+      // Randomize the correct option position
+      correctOption = Math.random() < 0.5 ? 0 : 1;
+      document.getElementById(`option${correctOption}`).innerText = correctTranslation;
+      document.getElementById(`option${1 - correctOption}`).innerText = incorrectTranslation;
+  
+      // Hide the Next Question button until an answer is selected
+      document.getElementById("nextButton").style.display = "none";
+    }
+  
+    // Get a random incorrect translation from the same form
+    function getRandomIncorrectTranslation(form, correctTranslation) {
+      const translations = Object.values(currentPair[form]).map(entry => entry.translation).filter(t => t !== correctTranslation);
+      return translations[Math.floor(Math.random() * translations.length)];
+    }
+  
+    // Check if selected answer is correct
+    function checkAnswer(selectedOption) {
+      if (selectedOption === correctOption) {
+        document.getElementById("feedback").innerText = "Correct!";
+        document.getElementById("example").innerText = `Example: ${currentPair[currentForm][currentWord].example}`;
+        document.getElementById("nextButton").style.display = "block"; // Show the Next Question button
+      } else {
+        document.getElementById("feedback").innerText = "Try again!";
+      }
+    }
+  
+    // Return to pair selection
+    function returnToPairSelection() {
+      document.getElementById("practiceSection").style.display = 'none';
+      document.getElementById("pairSelection").style.display = 'block';
+    }
+  
+    // Start the game
+    initializePairSelection();
+  </script>
+  
+
+</body>
+</html>

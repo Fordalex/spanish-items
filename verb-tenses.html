@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verb Tenses Practice</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        .grid-item {
+            position: relative;
+            width: 22vw;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item i {
+            font-size: 1.8rem;
+            color: #333;
+        }
+
+        .grid-item .tense {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .grid-item .spanish {
+            top: 85px;
+            position: absolute;
+            font-size: 1rem;
+            color: #555;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .grid-item:hover .tense {
+            opacity: 0;
+        }
+
+        .grid-item:hover .spanish {
+            opacity: 1;
+        }
+
+        .index-number {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <a href="index.html" class="btn btn-primary m-2">Back</a>
+
+    <div class="grid" id="grid-container"></div>
+
+    <script>
+        // Dataset for verbs with tenses
+        const verbs = [
+            { english: 'I had', spanish: 'Yo tuve', icon: 'fa-history' },
+            { english: 'I have', spanish: 'Yo tengo', icon: 'fa-hand-holding-heart' },
+            { english: 'I will have', spanish: 'Yo tendré', icon: 'fa-star' },
+            { english: 'I saw', spanish: 'Yo vi', icon: 'fa-eye-slash' },
+            { english: 'I see', spanish: 'Yo veo', icon: 'fa-eye' },
+            { english: 'I will see', spanish: 'Yo veré', icon: 'fa-binoculars' },
+            { english: 'I went', spanish: 'Yo fui', icon: 'fa-road' },
+            { english: 'I go', spanish: 'Yo voy', icon: 'fa-walking' },
+            { english: 'I will go', spanish: 'Yo iré', icon: 'fa-shoe-prints' },
+            { english: 'I made', spanish: 'Yo hice', icon: 'fa-hammer' },
+            { english: 'I make', spanish: 'Yo hago', icon: 'fa-hands' },
+            { english: 'I will make', spanish: 'Yo haré', icon: 'fa-tools' },
+            { english: 'I wanted', spanish: 'Yo quería', icon: 'fa-heart-broken' },
+            { english: 'I want', spanish: 'Yo quiero', icon: 'fa-heart' },
+            { english: 'I will want', spanish: 'Yo querré', icon: 'fa-gem' }
+        ];
+
+        // Function to create grid items
+        const gridContainer = document.getElementById('grid-container');
+
+        verbs.forEach((item, index) => {
+            const gridItem = document.createElement('div');
+            gridItem.classList.add('grid-item');
+
+            // Create index number element
+            const indexNumber = document.createElement('div');
+            indexNumber.classList.add('index-number');
+            indexNumber.textContent = `${Math.floor(index / 3) + 1}.`;
+            gridItem.appendChild(indexNumber);
+
+            // Create icon
+            const icon = document.createElement('i');
+            icon.classList.add('fas', item.icon);
+            gridItem.appendChild(icon);
+
+            // Create tense text
+            const tenseText = document.createElement('div');
+            tenseText.classList.add('tense');
+            tenseText.textContent = item.english;
+            gridItem.appendChild(tenseText);
+
+            // Create Spanish translation text
+            const spanishText = document.createElement('div');
+            spanishText.classList.add('spanish');
+            spanishText.textContent = item.spanish;
+            gridItem.appendChild(spanishText);
+
+            gridContainer.appendChild(gridItem);
+        });
+    </script>
+</body>
+</html>

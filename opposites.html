@@ -16,11 +16,20 @@
             background-color: #f4f4f9;
         }
 
+        .index-number {
+            position: absolute;
+            top: 8px;
+            left: 8px;
+            font-size: 0.9rem;
+            font-weight: bold;
+            color: #555;
+        }
+
         .grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
             gap: 20px;
-            max-width: 400px;
+            max-width: 800px;
             margin: auto;
             margin: 4rem;
         }
@@ -61,6 +70,8 @@
             color: #555;
             opacity: 0;
             transition: opacity 0.3s;
+            top: 85px;
+            font-weight: bold;
         }
 
         .grid-item:hover .english {
@@ -68,106 +79,145 @@
         }
 
         .grid-item:hover .spanish {
-            font-weight: bold;
-            top: 85px;
             opacity: 1;
         }
     </style>
 </head>
 <body>
-    <div class="grid">
-        <div class="grid-item">
-            <i class="fas fa-toggle-on"></i>
-            <div class="english">On</div>
-            <div class="spanish">Encendido</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-toggle-off"></i>
-            <div class="english">Off</div>
-            <div class="spanish">Apagado</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-arrow-up"></i>
-            <div class="english">Up</div>
-            <div class="spanish">Arriba</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-arrow-down"></i>
-            <div class="english">Down</div>
-            <div class="spanish">Abajo</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-sign-in-alt"></i>
-            <div class="english">In</div>
-            <div class="spanish">Dentro</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-sign-out-alt"></i>
-            <div class="english">Out</div>
-            <div class="spanish">Fuera</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-door-open"></i>
-            <div class="english">Open</div>
-            <div class="spanish">Abierto</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-door-closed"></i>
-            <div class="english">Closed</div>
-            <div class="spanish">Cerrado</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-expand"></i>
-            <div class="english">Big</div>
-            <div class="spanish">Grande</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-compress"></i>
-            <div class="english">Small</div>
-            <div class="spanish">Pequeño</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-temperature-high"></i>
-            <div class="english">Hot</div>
-            <div class="spanish">Caliente</div>
-        </div>
-        <div class="grid-item">
-            <i class="fas fa-temperature-low"></i>
-            <div class="english">Cold</div>
-            <div class="spanish">Frío</div>
-        </div>
-        <div class="grid-item"><i class="fas fa-lightbulb"></i><div class="english">Light</div><div class="spanish">Luz</div></div>
-        <div class="grid-item"><i class="fas fa-moon"></i><div class="english">Dark</div><div class="spanish">Oscuro</div></div>
-        <div class="grid-item"><i class="fas fa-glass-whiskey"></i><div class="english">Full</div><div class="spanish">Lleno</div></div>
-        <div class="grid-item"><i class="fas fa-glass-whiskey-alt"></i><div class="english">Empty</div><div class="spanish">Vacío</div></div>
-        <div class="grid-item"><i class="fas fa-smile"></i><div class="english">Happy</div><div class="spanish">Feliz</div></div>
-        <div class="grid-item"><i class="fas fa-frown"></i><div class="english">Sad</div><div class="spanish">Triste</div></div>
-        <div class="grid-item"><i class="fas fa-map-marker-alt"></i><div class="english">Near</div><div class="spanish">Cerca</div></div>
-        <div class="grid-item"><i class="fas fa-map"></i><div class="english">Far</div><div class="spanish">Lejos</div></div>
-        <div class="grid-item"><i class="fas fa-broom"></i><div class="english">Clean</div><div class="spanish">Limpio</div></div>
-        <div class="grid-item"><i class="fas fa-trash-alt"></i><div class="english">Dirty</div><div class="spanish">Sucio</div></div>
-        <div class="grid-item"><i class="fas fa-hand-rock"></i><div class="english">Hard</div><div class="spanish">Duro</div></div>
-        <div class="grid-item"><i class="fas fa-hand-paper"></i><div class="english">Soft</div><div class="spanish">Suave</div></div>
-        <div class="grid-item"><i class="fas fa-archway"></i><div class="english">Old</div><div class="spanish">Viejo</div></div>
-        <div class="grid-item"><i class="fas fa-baby"></i><div class="english">Young</div><div class="spanish">Joven</div></div>
-        <div class="grid-item"><i class="fas fa-shield-alt"></i><div class="english">Safe</div><div class="spanish">Seguro</div></div>
-        <div class="grid-item"><i class="fas fa-skull"></i><div class="english">Dangerous</div><div class="spanish">Peligroso</div></div>
-        <div class="grid-item"><i class="fas fa-arrows-alt-h"></i><div class="english">Wide</div><div class="spanish">Ancho</div></div>
-        <div class="grid-item"><i class="fas fa-compress-alt"></i><div class="english">Narrow</div><div class="spanish">Estrecho</div></div>
-        <div class="grid-item"><i class="fas fa-balance-scale-left"></i><div class="english">Light</div><div class="spanish">Ligero</div></div>
-        <div class="grid-item"><i class="fas fa-balance-scale-right"></i><div class="english">Heavy</div><div class="spanish">Pesado</div></div>
-        <div class="grid-item"><i class="fas fa-thumbs-up"></i><div class="english">Right</div><div class="spanish">Correcto</div></div>
-        <div class="grid-item"><i class="fas fa-thumbs-down"></i><div class="english">Wrong</div><div class="spanish">Incorrecto</div></div>
-        <div class="grid-item"><i class="fas fa-trophy"></i><div class="english">Win</div><div class="spanish">Ganar</div></div>
-        <div class="grid-item"><i class="fas fa-times-circle"></i><div class="english">Lose</div><div class="spanish">Perder</div></div>
-        <div class="grid-item"><i class="fas fa-sun"></i><div class="english">Day</div><div class="spanish">Día</div></div>
-        <div class="grid-item"><i class="fas fa-moon"></i><div class="english">Night</div><div class="spanish">Noche</div></div>
-        <div class="grid-item"><i class="fas fa-dollar-sign"></i><div class="english">Cheap</div><div class="spanish">Barato</div></div>
-        <div class="grid-item"><i class="fas fa-money-bill-alt"></i><div class="english">Expensive</div><div class="spanish">Caro</div></div>
-        <div class="grid-item"><i class="fas fa-volume-up"></i><div class="english">Loud</div><div class="spanish">Ruidoso</div></div>
-        <div class="grid-item"><i class="fas fa-volume-mute"></i><div class="english">Quiet</div><div class="spanish">Silencioso</div></div>
-        <div class="grid-item"><i class="fas fa-heart"></i><div class="english">Beautiful</div><div class="spanish">Hermoso</div></div>
-        <div class="grid-item"><i class="fas fa-heart-broken"></i><div class="english">Ugly</div><div class="spanish">Feo</div></div>
-    </div>
+    <div class="grid" id="grid-container"></div>
+
+    <script>
+        // JavaScript dataset for opposites
+        const opposites = [
+    { english: 'On', spanish: 'Encendido', icon: 'fa-toggle-on' },
+    { english: 'Off', spanish: 'Apagado', icon: 'fa-toggle-off' },
+    { english: 'Up', spanish: 'Arriba', icon: 'fa-arrow-up' },
+    { english: 'Down', spanish: 'Abajo', icon: 'fa-arrow-down' },
+    { english: 'Light', spanish: 'Luz', icon: 'fa-lightbulb' },
+    { english: 'Dark', spanish: 'Oscuro', icon: 'fa-moon' },
+    { english: 'Full', spanish: 'Lleno', icon: 'fa-glass-whiskey' },
+    { english: 'Empty', spanish: 'Vacío', icon: 'fa-glass-whiskey-alt' },
+    { english: 'Happy', spanish: 'Feliz', icon: 'fa-smile' },
+    { english: 'Sad', spanish: 'Triste', icon: 'fa-frown' },
+    { english: 'Near', spanish: 'Cerca', icon: 'fa-map-marker-alt' },
+    { english: 'Far', spanish: 'Lejos', icon: 'fa-map' },
+    { english: 'Clean', spanish: 'Limpio', icon: 'fa-broom' },
+    { english: 'Dirty', spanish: 'Sucio', icon: 'fa-trash-alt' },
+    { english: 'Hard', spanish: 'Duro', icon: 'fa-hand-rock' },
+    { english: 'Soft', spanish: 'Suave', icon: 'fa-hand-paper' },
+    { english: 'Old', spanish: 'Viejo', icon: 'fa-archway' },
+    { english: 'Young', spanish: 'Joven', icon: 'fa-baby' },
+    { english: 'Safe', spanish: 'Seguro', icon: 'fa-shield-alt' },
+    { english: 'Dangerous', spanish: 'Peligroso', icon: 'fa-skull' },
+    { english: 'Wide', spanish: 'Ancho', icon: 'fa-arrows-alt-h' },
+    { english: 'Narrow', spanish: 'Estrecho', icon: 'fa-compress-alt' },
+    { english: 'Light', spanish: 'Ligero', icon: 'fa-balance-scale-left' },
+    { english: 'Heavy', spanish: 'Pesado', icon: 'fa-balance-scale-right' },
+    { english: 'Right', spanish: 'Correcto', icon: 'fa-thumbs-up' },
+    { english: 'Wrong', spanish: 'Incorrecto', icon: 'fa-thumbs-down' },
+    { english: 'Win', spanish: 'Ganar', icon: 'fa-trophy' },
+    { english: 'Lose', spanish: 'Perder', icon: 'fa-times-circle' },
+    { english: 'Day', spanish: 'Día', icon: 'fa-sun' },
+    { english: 'Night', spanish: 'Noche', icon: 'fa-moon' },
+    { english: 'Hot', spanish: 'Caliente', icon: 'fa-temperature-high' },
+    { english: 'Cold', spanish: 'Frío', icon: 'fa-temperature-low' },
+    { english: 'Cheap', spanish: 'Barato', icon: 'fa-dollar-sign' },
+    { english: 'Expensive', spanish: 'Caro', icon: 'fa-money-bill-alt' },
+    { english: 'Loud', spanish: 'Ruidoso', icon: 'fa-volume-up' },
+    { english: 'Quiet', spanish: 'Silencioso', icon: 'fa-volume-mute' },
+    { english: 'Beautiful', spanish: 'Hermoso', icon: 'fa-heart' },
+    { english: 'Ugly', spanish: 'Feo', icon: 'fa-heart-broken' },
+    { english: 'Fast', spanish: 'Rápido', icon: 'fa-running' },
+    { english: 'Slow', spanish: 'Lento', icon: 'fa-walking' },
+    { english: 'Early', spanish: 'Temprano', icon: 'fa-clock' },
+    { english: 'Late', spanish: 'Tarde', icon: 'fa-hourglass-end' },
+    { english: 'Start', spanish: 'Empezar', icon: 'fa-play' },
+    { english: 'Stop', spanish: 'Detener', icon: 'fa-stop' },
+    { english: 'First', spanish: 'Primero', icon: 'fa-medal' },
+    { english: 'Last', spanish: 'Último', icon: 'fa-flag-checkered' },
+    { english: 'High', spanish: 'Alto', icon: 'fa-mountain' },
+    { english: 'Low', spanish: 'Bajo', icon: 'fa-level-down-alt' },
+    { english: 'Strong', spanish: 'Fuerte', icon: 'fa-dumbbell' },
+    { english: 'Weak', spanish: 'Débil', icon: 'fa-feather' },
+    { english: 'Open', spanish: 'Abierto', icon: 'fa-door-open' },
+    { english: 'Closed', spanish: 'Cerrado', icon: 'fa-door-closed' },
+    { english: 'Thin', spanish: 'Delgado', icon: 'fa-user-alt-slash' },
+    { english: 'Thick', spanish: 'Grueso', icon: 'fa-bacon' },
+    { english: 'Easy', spanish: 'Fácil', icon: 'fa-smile-beam' },
+    { english: 'Difficult', spanish: 'Difícil', icon: 'fa-frown-open' },
+    { english: 'New', spanish: 'Nuevo', icon: 'fa-gift' },
+    { english: 'Old', spanish: 'Viejo', icon: 'fa-archive' },
+    { english: 'Warm', spanish: 'Caliente', icon: 'fa-temperature-high' },
+    { english: 'Cool', spanish: 'Fresco', icon: 'fa-snowflake' },
+    { english: 'Dry', spanish: 'Seco', icon: 'fa-tint-slash' },
+    { english: 'Wet', spanish: 'Mojado', icon: 'fa-tint' },
+    { english: 'Rich', spanish: 'Rico', icon: 'fa-gem' },
+    { english: 'Poor', spanish: 'Pobre', icon: 'fa-poo' },
+    { english: 'Tall', spanish: 'Alto', icon: 'fa-ruler-vertical' },
+    { english: 'Short', spanish: 'Bajo', icon: 'fa-ruler-horizontal' },
+    { english: 'Left', spanish: 'Izquierda', icon: 'fa-arrow-left' },
+    { english: 'Right', spanish: 'Derecha', icon: 'fa-arrow-right' },
+    { english: 'Strong', spanish: 'Fuerte', icon: 'fa-fist-raised' },
+    { english: 'Weak', spanish: 'Débil', icon: 'fa-hand-paper' },
+    { english: 'Smart', spanish: 'Inteligente', icon: 'fa-brain' },
+    { english: 'Stupid', spanish: 'Estúpido', icon: 'fa-dizzy' },
+    { english: 'Alive', spanish: 'Vivo', icon: 'fa-heartbeat' },
+    { english: 'Dead', spanish: 'Muerto', icon: 'fa-skull-crossbones' },
+    { english: 'Male', spanish: 'Masculino', icon: 'fa-mars' },
+    { english: 'Female', spanish: 'Femenino', icon: 'fa-venus' },
+    { english: 'Clean', spanish: 'Limpio', icon: 'fa-hand-sparkles' },
+    { english: 'Messy', spanish: 'Desordenado', icon: 'fa-wind' },
+    { english: 'Large', spanish: 'Grande', icon: 'fa-expand' },
+    { english: 'Small', spanish: 'Pequeño', icon: 'fa-compress' },
+    { english: 'Bright', spanish: 'Brillante', icon: 'fa-sun' },
+    { english: 'Dull', spanish: 'Opaco', icon: 'fa-cloud' },
+    { english: 'Sweet', spanish: 'Dulce', icon: 'fa-candy-cane' },
+    { english: 'Sour', spanish: 'Ácido', icon: 'fa-lemon' },
+    { english: 'Top', spanish: 'Superior', icon: 'fa-angle-double-up' },
+    { english: 'Bottom', spanish: 'Inferior', icon: 'fa-angle-double-down' },
+    { english: 'Increase', spanish: 'Incrementar', icon: 'fa-arrow-up' },
+    { english: 'Decrease', spanish: 'Decrementar', icon: 'fa-arrow-down' },
+    { english: 'Old-fashioned', spanish: 'Anticuado', icon: 'fa-hourglass-half' },
+    { english: 'Modern', spanish: 'Moderno', icon: 'fa-laptop' },
+    { english: 'Accept', spanish: 'Aceptar', icon: 'fa-check' },
+    { english: 'Reject', spanish: 'Rechazar', icon: 'fa-times' },
+    { english: 'Victory', spanish: 'Victoria', icon: 'fa-trophy' },
+    { english: 'Defeat', spanish: 'Derrota', icon: 'fa-thumbs-down' }
+];
+
+        // Function to create grid items based on the dataset
+        const gridContainer = document.getElementById('grid-container');
+
+        opposites.forEach((item, index) => {
+            const gridItem = document.createElement('div');
+            gridItem.classList.add('grid-item');
+
+            // Create index number element
+            const indexNumber = document.createElement('div');
+            indexNumber.classList.add('index-number');
+            indexNumber.textContent = Math.floor(index / 2) + 1;
+            gridItem.appendChild(indexNumber);
+
+            // Create icon
+            const icon = document.createElement('i');
+            icon.classList.add('fas', item.icon);
+            gridItem.appendChild(icon);
+
+            // Create English text
+            const englishText = document.createElement('div');
+            englishText.classList.add('english');
+            englishText.textContent = item.english;
+            gridItem.appendChild(englishText);
+
+            // Create Spanish text
+            const spanishText = document.createElement('div');
+            spanishText.classList.add('spanish');
+            spanishText.textContent = item.spanish;
+            gridItem.appendChild(spanishText);
+
+            gridContainer.appendChild(gridItem);
+        });
+
+    </script>
 </body>
 </html>

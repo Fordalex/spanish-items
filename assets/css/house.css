@@ -60,3 +60,17 @@
     left: 18%;
     top: 45%;
 }
+
+.upstairs {
+    width: 100%;
+    height: 28%;
+    left: 0%;
+    top: 40%;
+}
+
+.downstairs {
+    width: 100%;
+    height: 28%;
+    left: 0%;
+    top: 67%;
+}

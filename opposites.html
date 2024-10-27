@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Opposite Words Grid</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f4f9;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 20px;
+            max-width: 400px;
+            margin: auto;
+            margin: 4rem;
+        }
+
+        .grid-item {
+            position: relative;
+            width: 150px;
+            height: 150px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            cursor: pointer;
+            transition: transform 0.3s;
+        }
+
+        .grid-item:hover {
+            transform: scale(1.05);
+        }
+
+        .grid-item i {
+            font-size: 2rem;
+            color: #333;
+        }
+
+        .grid-item .english {
+            font-weight: bold;
+            margin-top: 10px;
+        }
+
+        .grid-item .spanish {
+            position: absolute;
+            font-size: 1rem;
+            color: #555;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+
+        .grid-item:hover .english {
+            opacity: 0;
+        }
+
+        .grid-item:hover .spanish {
+            font-weight: bold;
+            top: 85px;
+            opacity: 1;
+        }
+    </style>
+</head>
+<body>
+    <div class="grid">
+        <div class="grid-item">
+            <i class="fas fa-toggle-on"></i>
+            <div class="english">On</div>
+            <div class="spanish">Encendido</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-toggle-off"></i>
+            <div class="english">Off</div>
+            <div class="spanish">Apagado</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-arrow-up"></i>
+            <div class="english">Up</div>
+            <div class="spanish">Arriba</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-arrow-down"></i>
+            <div class="english">Down</div>
+            <div class="spanish">Abajo</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-sign-in-alt"></i>
+            <div class="english">In</div>
+            <div class="spanish">Dentro</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-sign-out-alt"></i>
+            <div class="english">Out</div>
+            <div class="spanish">Fuera</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-door-open"></i>
+            <div class="english">Open</div>
+            <div class="spanish">Abierto</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-door-closed"></i>
+            <div class="english">Closed</div>
+            <div class="spanish">Cerrado</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-expand"></i>
+            <div class="english">Big</div>
+            <div class="spanish">Grande</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-compress"></i>
+            <div class="english">Small</div>
+            <div class="spanish">Pequeño</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-temperature-high"></i>
+            <div class="english">Hot</div>
+            <div class="spanish">Caliente</div>
+        </div>
+        <div class="grid-item">
+            <i class="fas fa-temperature-low"></i>
+            <div class="english">Cold</div>
+            <div class="spanish">Frío</div>
+        </div>
+        <div class="grid-item"><i class="fas fa-lightbulb"></i><div class="english">Light</div><div class="spanish">Luz</div></div>
+        <div class="grid-item"><i class="fas fa-moon"></i><div class="english">Dark</div><div class="spanish">Oscuro</div></div>
+        <div class="grid-item"><i class="fas fa-glass-whiskey"></i><div class="english">Full</div><div class="spanish">Lleno</div></div>
+        <div class="grid-item"><i class="fas fa-glass-whiskey-alt"></i><div class="english">Empty</div><div class="spanish">Vacío</div></div>
+        <div class="grid-item"><i class="fas fa-smile"></i><div class="english">Happy</div><div class="spanish">Feliz</div></div>
+        <div class="grid-item"><i class="fas fa-frown"></i><div class="english">Sad</div><div class="spanish">Triste</div></div>
+        <div class="grid-item"><i class="fas fa-map-marker-alt"></i><div class="english">Near</div><div class="spanish">Cerca</div></div>
+        <div class="grid-item"><i class="fas fa-map"></i><div class="english">Far</div><div class="spanish">Lejos</div></div>
+        <div class="grid-item"><i class="fas fa-broom"></i><div class="english">Clean</div><div class="spanish">Limpio</div></div>
+        <div class="grid-item"><i class="fas fa-trash-alt"></i><div class="english">Dirty</div><div class="spanish">Sucio</div></div>
+        <div class="grid-item"><i class="fas fa-hand-rock"></i><div class="english">Hard</div><div class="spanish">Duro</div></div>
+        <div class="grid-item"><i class="fas fa-hand-paper"></i><div class="english">Soft</div><div class="spanish">Suave</div></div>
+        <div class="grid-item"><i class="fas fa-archway"></i><div class="english">Old</div><div class="spanish">Viejo</div></div>
+        <div class="grid-item"><i class="fas fa-baby"></i><div class="english">Young</div><div class="spanish">Joven</div></div>
+        <div class="grid-item"><i class="fas fa-shield-alt"></i><div class="english">Safe</div><div class="spanish">Seguro</div></div>
+        <div class="grid-item"><i class="fas fa-skull"></i><div class="english">Dangerous</div><div class="spanish">Peligroso</div></div>
+        <div class="grid-item"><i class="fas fa-arrows-alt-h"></i><div class="english">Wide</div><div class="spanish">Ancho</div></div>
+        <div class="grid-item"><i class="fas fa-compress-alt"></i><div class="english">Narrow</div><div class="spanish">Estrecho</div></div>
+        <div class="grid-item"><i class="fas fa-balance-scale-left"></i><div class="english">Light</div><div class="spanish">Ligero</div></div>
+        <div class="grid-item"><i class="fas fa-balance-scale-right"></i><div class="english">Heavy</div><div class="spanish">Pesado</div></div>
+        <div class="grid-item"><i class="fas fa-thumbs-up"></i><div class="english">Right</div><div class="spanish">Correcto</div></div>
+        <div class="grid-item"><i class="fas fa-thumbs-down"></i><div class="english">Wrong</div><div class="spanish">Incorrecto</div></div>
+        <div class="grid-item"><i class="fas fa-trophy"></i><div class="english">Win</div><div class="spanish">Ganar</div></div>
+        <div class="grid-item"><i class="fas fa-times-circle"></i><div class="english">Lose</div><div class="spanish">Perder</div></div>
+        <div class="grid-item"><i class="fas fa-sun"></i><div class="english">Day</div><div class="spanish">Día</div></div>
+        <div class="grid-item"><i class="fas fa-moon"></i><div class="english">Night</div><div class="spanish">Noche</div></div>
+        <div class="grid-item"><i class="fas fa-dollar-sign"></i><div class="english">Cheap</div><div class="spanish">Barato</div></div>
+        <div class="grid-item"><i class="fas fa-money-bill-alt"></i><div class="english">Expensive</div><div class="spanish">Caro</div></div>
+        <div class="grid-item"><i class="fas fa-volume-up"></i><div class="english">Loud</div><div class="spanish">Ruidoso</div></div>
+        <div class="grid-item"><i class="fas fa-volume-mute"></i><div class="english">Quiet</div><div class="spanish">Silencioso</div></div>
+        <div class="grid-item"><i class="fas fa-heart"></i><div class="english">Beautiful</div><div class="spanish">Hermoso</div></div>
+        <div class="grid-item"><i class="fas fa-heart-broken"></i><div class="english">Ugly</div><div class="spanish">Feo</div></div>
+    </div>
+</body>
+</html>

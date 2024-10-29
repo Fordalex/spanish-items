@@ -10,66 +10,69 @@
 </head>
 
 <body class="p-3">
-    <a href="./diary.html" class="btn btn-primary m-2">Back</a>
     <a href="./previous-answers.html" class="btn btn-secondary m-2">View Previous Answers</a>
 
     <div class="container mb-3" id="questionsContainer">
         <div class="mb-3">
-            <p data-question="wakeUp">What time did you wake up and what did you wear?</p>
-            <textarea class="form-control" rows="3" data-answer="wakeUp"></textarea>
+            <p>What time did you wake up and what did you wear?</p>
+            <textarea class="form-control" rows="3" data-question="wakeUp"></textarea>
         </div>
         <div class="mb-3">
-            <p data-question="breakfast">What did you have for breakfast?</p>
-            <textarea class="form-control" rows="3" data-answer="breakfast"></textarea>
+            <p>What did you have for breakfast?</p>
+            <textarea class="form-control" rows="3" data-question="breakfast"></textarea>
         </div>
         <div class="mb-3">
-            <p data-question="dailyGoals">What did you do before lunch?</p>
-            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
+            <p>What are your main goals for the day?</p>
+            <textarea class="form-control" rows="3" data-question="dailyGoals"></textarea>
         </div>
-        <div class="mb-3">
-            <p data-question="dailyGoals">What did you do on your lunch?</p>
-            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
-        </div>
-        <div class="mb-3">
-            <p data-question="dailyGoals">What did you do after work?</p>
-            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
-        </div>
-        <div class="mb-3">
-            <p data-question="dailyGoals">What was the best thing that happened today?</p>
-            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
-        </div>
-
+        <!-- Add more questions as needed -->
     </div>
 
     <div class="container mb-3">
         <button class="btn btn-primary" id="saveButton">Save</button>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
+        const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+        const editIndex = localStorage.getItem('editEntryIndex');
+
+        if (editIndex !== null) {
+            const entryToEdit = entries[editIndex];
+
+            if (entryToEdit) {
+                // Populate each answer into the matching textarea
+                entryToEdit.answers.forEach(qa => {
+                    const textarea = document.querySelector(`textarea[data-question="${qa.question}"]`);
+                    if (textarea) {
+                        textarea.value = qa.answer; // Set the textarea with the stored answer
+                    }
+                });
+            }
+        }
+
         document.getElementById('saveButton').addEventListener('click', function() {
-            const date = new Date().toDateString();
-            const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
-
-            // Gather all questions and answers dynamically
             const questionsContainer = document.getElementById('questionsContainer');
-            const newEntry = { date, answers: [] };
+            const date = new Date().toDateString();
+            const answers = [];
 
-            questionsContainer.querySelectorAll('p[data-question]').forEach(questionElement => {
-                const question = questionElement.innerText;
-                const answerKey = questionElement.getAttribute('data-question');
-                const answer = questionsContainer.querySelector(`textarea[data-answer="${answerKey}"]`).value;
-
-                newEntry.answers.push({ question, answer });
+            // Collect all question-answer pairs
+            questionsContainer.querySelectorAll('textarea[data-question]').forEach(textarea => {
+                const question = textarea.getAttribute('data-question');
+                const answer = textarea.value;
+                answers.push({ question, answer });
             });
 
-            // Save new entry in the array and update localStorage
-            entries.push(newEntry);
-            localStorage.setItem('diaryEntries', JSON.stringify(entries));
+            const newEntry = { date, answers };
 
-            // Clear all text areas
-            questionsContainer.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
-            alert('Entry saved!');
+            if (editIndex !== null) {
+                entries[editIndex] = newEntry; // Update the existing entry
+                localStorage.removeItem('editEntryIndex'); // Clear edit index after saving
+            } else {
+                entries.push(newEntry); // Add a new entry if not editing
+            }
+
+            localStorage.setItem('diaryEntries', JSON.stringify(entries));
+            window.location.href = './previous-answers.html'; // Redirect after saving
         });
     </script>
 </body>

@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js"></script>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="../assets/css/styles.css">
+    <title>Diary Form</title>
+</head>
+
+<body class="p-3">
+    <a href="./diary.html" class="btn btn-primary m-2">Back</a>
+    <a href="./previous-answers.html" class="btn btn-secondary m-2">View Previous Answers</a>
+
+    <div class="container mb-3" id="questionsContainer">
+        <div class="mb-3">
+            <p data-question="wakeUp">What time did you wake up and what did you wear?</p>
+            <textarea class="form-control" rows="3" data-answer="wakeUp"></textarea>
+        </div>
+        <div class="mb-3">
+            <p data-question="breakfast">What did you have for breakfast?</p>
+            <textarea class="form-control" rows="3" data-answer="breakfast"></textarea>
+        </div>
+        <div class="mb-3">
+            <p data-question="dailyGoals">What did you do before lunch?</p>
+            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
+        </div>
+        <div class="mb-3">
+            <p data-question="dailyGoals">What did you do on your lunch?</p>
+            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
+        </div>
+        <div class="mb-3">
+            <p data-question="dailyGoals">What did you do after work?</p>
+            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
+        </div>
+        <div class="mb-3">
+            <p data-question="dailyGoals">What was the best thing that happened today?</p>
+            <textarea class="form-control" rows="3" data-answer="dailyGoals"></textarea>
+        </div>
+
+    </div>
+
+    <div class="container mb-3">
+        <button class="btn btn-primary" id="saveButton">Save</button>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script>
+        document.getElementById('saveButton').addEventListener('click', function() {
+            const date = new Date().toDateString();
+            const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
+
+            // Gather all questions and answers dynamically
+            const questionsContainer = document.getElementById('questionsContainer');
+            const newEntry = { date, answers: [] };
+
+            questionsContainer.querySelectorAll('p[data-question]').forEach(questionElement => {
+                const question = questionElement.innerText;
+                const answerKey = questionElement.getAttribute('data-question');
+                const answer = questionsContainer.querySelector(`textarea[data-answer="${answerKey}"]`).value;
+
+                newEntry.answers.push({ question, answer });
+            });
+
+            // Save new entry in the array and update localStorage
+            entries.push(newEntry);
+            localStorage.setItem('diaryEntries', JSON.stringify(entries));
+
+            // Clear all text areas
+            questionsContainer.querySelectorAll('textarea').forEach(textarea => textarea.value = '');
+            alert('Entry saved!');
+        });
+    </script>
+</body>
+</html>

@@ -10,7 +10,7 @@
 </head>
 
 <body class="p-3">
-    <a href="./previous-answers.html" class="btn btn-secondary m-2">View Previous Answers</a>
+    <a href="./diary.html" class="btn btn-primary m-2">Back</a>
 
     <div class="container mb-3" id="questionsContainer">
         <div class="mb-3">
@@ -37,11 +37,26 @@
             <p>What was the best thing that happened today?</p>
             <textarea class="form-control" rows="3" data-question="today"></textarea>
         </div>
+        <div class="mb-3">
+            <p>What words did you struggle with?</p>
+            <textarea class="form-control" rows="3" data-question="wordsToLearn"></textarea>
+        </div>
     </div>
 
     <div class="container mb-3">
         <button class="btn btn-primary" id="saveButton">Save</button>
     </div>
+
+    <div class="container mb-3">
+        <h4>Add New Words to Learn</h4>
+        <div class="mb-3">
+            <input type="text" class="form-control mb-2" placeholder="English" id="englishWord">
+            <input type="text" class="form-control mb-2" placeholder="Spanish" id="spanishWord">
+            <button class="btn btn-secondary" id="addWordButton">Add Word</button>
+        </div>
+        <div id="message" class="text-success mt-2"></div> <!-- Success message -->
+    </div>
+    
 
     <script>
         const entries = JSON.parse(localStorage.getItem('diaryEntries')) || [];
@@ -86,6 +101,31 @@
             localStorage.setItem('diaryEntries', JSON.stringify(entries));
             window.location.href = './previous-answers.html'; // Redirect after saving
         });
+
+        const wordsToLearn = JSON.parse(localStorage.getItem('wordsToLearn')) || [];
+
+        document.getElementById('addWordButton').addEventListener('click', function() {
+            const englishWord = document.getElementById('englishWord').value.trim();
+            const spanishWord = document.getElementById('spanishWord').value.trim();
+            const messageDiv = document.getElementById('message');
+
+            if (englishWord && spanishWord) {
+                wordsToLearn.push({ english: englishWord, spanish: spanishWord });
+                localStorage.setItem('wordsToLearn', JSON.stringify(wordsToLearn));
+
+                // Display confirmation message and clear input fields
+                messageDiv.textContent = "Word added successfully!";
+                document.getElementById('englishWord').value = '';
+                document.getElementById('spanishWord').value = '';
+
+                // Clear the message after a few seconds
+                setTimeout(() => { messageDiv.textContent = ''; }, 3000);
+            } else {
+                messageDiv.textContent = "Please fill in both English and Spanish fields.";
+                setTimeout(() => { messageDiv.textContent = ''; }, 3000);
+            }
+        });
+
     </script>
 </body>
 </html>

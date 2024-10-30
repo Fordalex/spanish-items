@@ -15,6 +15,7 @@ p,td {
     font-style: normal;
     color: rgb(66, 66, 66);
     font-size: 0.9rem;
+    white-space: break-spaces;
 }
 
 body {

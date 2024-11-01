@@ -1,0 +1,69 @@
+.image-container {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 1;
+    position: relative;
+}
+
+.square {
+    width: 33%;
+    height: 33%;
+    left: 0%;
+    top: 0%;
+}
+
+.circle {
+    width: 33%;
+    height: 33%;
+    left: 33%;
+    top: 0%;
+}
+
+.rectangle {
+    width: 33%;
+    height: 33%;
+    left: 66%;
+    top: 0%;
+}
+
+.triangle {
+    width: 33%;
+    height: 33%;
+    left: 0%;
+    top: 33%;
+}
+
+.pentagon {
+    width: 33%;
+    height: 33%;
+    left: 33%;
+    top: 33%;
+}
+
+.oval {
+    width: 33%;
+    height: 33%;
+    left: 66%;
+    top: 33%;
+}
+
+.star {
+    width: 33%;
+    height: 33%;
+    left: 0%;
+    top: 66%;
+}
+
+.moon {
+    width: 33%;
+    height: 33%;
+    left: 33%;
+    top: 66%;
+}
+
+.heart {
+    width: 33%;
+    height: 33%;
+    left: 66%;
+    top: 66%;
+}

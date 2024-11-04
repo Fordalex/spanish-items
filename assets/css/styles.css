@@ -20,6 +20,16 @@ body {
     background-color: #f4f4f9;
 }
 
+.big-button a {
+    text-decoration: none;
+    color: black;
+}
+
+.big-button i {
+    display: flex;
+    align-items: center;
+}
+
 .container {
     display: flex;
     flex-direction: column;
@@ -74,7 +84,7 @@ body {
 .item {
     padding: 5px;
     position: absolute;
-    /* border: solid black 1px; */
+    border: solid black 1px;
 }
 
 .item:hover {

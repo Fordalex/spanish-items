@@ -1,0 +1,62 @@
+.image-container {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 5 / 4;
+    position: relative;
+}
+
+.metal {
+    width: 25%;
+    height: 50%;
+    left: 0%;
+    top: 0%;
+}
+
+.glass {
+    width: 25%;
+    height: 50%;
+    left: 25%;
+    top: 0%;
+}
+
+.plastic {
+    width: 25%;
+    height: 50%;
+    left: 50%;
+    top: 0%;
+}
+
+.fabric {
+    width: 25%;
+    height: 50%;
+    left: 75%;
+    top: 0%;
+}
+
+.concrete {
+    width: 25%;
+    height: 50%;
+    left: 0%;
+    top: 50%;
+}
+
+.wood {
+    width: 25%;
+    height: 50%;
+    left: 25%;
+    top: 50%;
+}
+
+.ceramic {
+    width: 25%;
+    height: 50%;
+    left: 50%;
+    top: 50%;
+}
+
+.rubber {
+    width: 25%;
+    height: 50%;
+    left: 75%;
+    top: 50%;
+}

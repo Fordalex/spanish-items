@@ -1,0 +1,13 @@
+.image-container {
+    display: flex;
+    width: 100%;
+    aspect-ratio: 4 / 2;
+    position: relative;
+}
+
+.kitchen {
+    width: 22%;
+    height: 26%;
+    left: 62%;
+    top: 66%;
+}

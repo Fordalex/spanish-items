@@ -28,8 +28,11 @@
     </div>
 
     <script>
-        const wordsToLearn = JSON.parse(localStorage.getItem('wordsToLearn')) || [];
         let currentIndex = 0;
+
+        const wordsToLearnFromStorage = JSON.parse(localStorage.getItem('wordsToLearn')) || [];
+        const wordsToLearn = [...wordsToLearnFromStorage].sort(() => Math.random() - 0.5);
+
         const flashcard = document.getElementById('flashcard');
         const revealButton = document.getElementById('revealButton');
         const nextButton = document.getElementById('nextButton');
